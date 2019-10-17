@@ -39,6 +39,8 @@ This code implements the animation tool described in
    **AFTER** downloading the plugin to restore our customized version of the script.
 
    Alternatively, you can use `git reset --hard`, but make sure you know what you're doing.
+   
+4. Re-open the project in Unity and navigate to the scene `./Assets/Scenes/Main.Unity`. Now you're ready to run and tinker with the code.
 
 *Other dependencies*
 
