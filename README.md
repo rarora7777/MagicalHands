@@ -44,9 +44,9 @@ This code implements the animation tool described in
 
 *Other dependencies*
 
-1. Oculus Rift Runtime: https://www.oculus.com/setup/
+1. [Oculus Rift Runtime](https://www.oculus.com/setup/)
 
-2. Unity: https://store.unity.com/ (Tested with version 2018.3.6f1&ndash;2018.3.8f1)
+2. [Unity](https://store.unity.com/) (Tested with version 2018.3.6f1&ndash;2018.3.8f1)
 
 *Hardware*
 
@@ -71,9 +71,9 @@ Oculus Rift with Touch controllers
 
 **Note:** When running within Unity Editor, skip the `Ctrl` key for all the above. `Ctrl` is only needed when running the executable (that you downloaded from the Releases, or built yourself).
 
-## Saving and Loading scenes
+## Saving and Loading Scenes
 
-Scenes are stored as `JSON` files.
+Scenes are stored as [`JSON`](https://en.wikipedia.org/wiki/JSON) files.
 
 &mdash; To load a scene, use the `--File` option when running the executable.
 
