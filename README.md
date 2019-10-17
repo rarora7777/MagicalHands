@@ -10,7 +10,7 @@ This code implements the animation tool described in
 
    `./MagicalHands.exe --File ./Results/loop_de_loop.json`
    
-   to load the result `loop_de_loop` from Fig. 1(e--f). Please see `./Results` for other results from the paper.
+   to load the result `loop_de_loop` from Fig. 1(e&ndash;f). Please see `./Results` for other results from the paper.
    
    Forgo the `--File` option to start creating your own animations:
    
@@ -58,9 +58,6 @@ Oculus Rift with Touch controllers
 
 2. Ensure that the Oculus package is installed (should be automatic): Window > Package Manager > In Project should show "Oculus (Desktop)" v1.29 installed.
 
-<h2>Running the program</h2>
-
-Load the scene `Assets/Scences/Main.unity` in the Unity interface and run.
 
 <h2>Keyboard Controls</h2>
 
@@ -72,7 +69,7 @@ Load the scene `Assets/Scences/Main.unity` in the Unity interface and run.
 
 `Ctrl+Z` Undo last command (Also available via 3DUI)
 
-**Note:** When running within Unity Editor, skip the `Ctrl` key for all the above. `Ctrl` is only needed when running the executable.
+**Note:** When running within Unity Editor, skip the `Ctrl` key for all the above. `Ctrl` is only needed when running the executable (that you downloaded from the Releases, or built yourself).
 
 ## Saving and Loading scenes
 
