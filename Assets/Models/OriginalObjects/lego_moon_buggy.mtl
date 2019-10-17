@@ -1,0 +1,66 @@
+# Blender MTL File: 'None'
+# Material Count: 6
+
+newmtl Color_1
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.956863 0.956863 0.956863
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl Color_2
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.631373 0.647059 0.635294
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl Color_26
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 0.062745 0.062745 0.062745
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+
+newmtl Decoration_3039d23
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\raror\OneDrive - University of Toronto\Pictures\Gestural Animation\Models\lego_moon_buggy_8kSHCCK66fa\maps\decoration\3039d23.png
+map_Bump C:\\Users\\raror\\OneDrive - University of Toronto\\Pictures\\Gestural Animation\\Models\\lego_moon_buggy_8kSHCCK66fa\\maps\\bump\\3039_bump.png
+
+newmtl Decoration_3626av
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\raror\OneDrive - University of Toronto\Pictures\Gestural Animation\Models\lego_moon_buggy_8kSHCCK66fa\maps\decoration\3626av.png
+
+newmtl Decoration_3814d134
+Ns 96.078431
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+map_Kd C:\Users\raror\OneDrive - University of Toronto\Pictures\Gestural Animation\Models\lego_moon_buggy_8kSHCCK66fa\maps\decoration\3814d134.png

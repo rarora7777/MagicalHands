@@ -1,0 +1,148 @@
+fileFormatVersion: 2
+guid: 742ca6c36469e75439482e9cacaa1083
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Eyeballs
+    100002: Eyes
+    100004: Face
+    100006: Horns
+    100008: //RootNode
+    100010: Mouth
+    400000: Eyeballs
+    400002: Eyes
+    400004: Face
+    400006: Horns
+    400008: //RootNode
+    400010: Mouth
+    2100000: dark red
+    2100002: brick red
+    2100004: Eye black
+    2100006: Eye white
+    2100008: bright red
+    2300000: Eyeballs
+    2300002: Eyes
+    2300004: Face
+    2300006: Horns
+    2300008: Mouth
+    3300000: Eyeballs
+    3300002: Eyes
+    3300004: Face
+    3300006: Horns
+    3300008: Mouth
+    4300000: Mouth
+    4300002: Face
+    4300004: Eyeballs
+    4300006: Eyes
+    4300008: Horns
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye black
+    second: {fileID: 2100000, guid: 0078b086eb6420547b80ca3e07fde025, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Eye white
+    second: {fileID: 2100000, guid: e74fb87064e86324794c8e7744f91158, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brick red
+    second: {fileID: 2100000, guid: fe7decc3d5f5ba54ea0a873181e4cb2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bright red
+    second: {fileID: 2100000, guid: 709ddb1ec13768244a897c157eb4d6b8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dark red
+    second: {fileID: 2100000, guid: 77f2d973d8cfa62458318d0a97ba0d24, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

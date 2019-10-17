@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.gestural_animation.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "C:\\Users\\arorar\\Documents\\Gestural_animation\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Gestural_animation [Testing]"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+[submodule "Assets/geometry3sharp"]
+	path = Assets/geometry3sharp
+	url = https://github.com/gradientspace/geometry3sharp.git

@@ -1,0 +1,216 @@
+{
+  "actions": [
+    {
+      "name": "/actions/default/in/AButton",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/BButton",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/XButton",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/YButton",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/LeftIndexTouch",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/RightIndexTouch",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/ATouch",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/BTouch",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/XTouch",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/YTouch",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/LeftStickTouch",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/RightStickTouch",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/LeftStickPress",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/RightStickPress",
+      "type": "boolean",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/LeftIndexTrigger",
+      "type": "vector1",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/RightIndexTrigger",
+      "type": "vector1",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/LeftMiddleTrigger",
+      "type": "vector1",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/RightMiddleTrigger",
+      "type": "vector1",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/LeftStick",
+      "type": "vector2",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/RightStick",
+      "type": "vector2",
+      "requirement": "mandatory"
+    },
+    {
+      "name": "/actions/default/in/LeftIndexNearTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/RightIndexNearTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/LeftStickNearTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/RightStickNearTouch",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/out/Haptic",
+      "type": "vibration"
+    },
+    {
+      "name": "/actions/platformer/in/Move",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/platformer/in/Jump",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/buggy/in/Steering",
+      "type": "vector2"
+    },
+    {
+      "name": "/actions/buggy/in/Throttle",
+      "type": "vector1"
+    },
+    {
+      "name": "/actions/buggy/in/Brake",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/buggy/in/Reset",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/mixedreality/in/ExternalCamera",
+      "type": "pose",
+      "requirement": "optional"
+    }
+  ],
+  "action_sets": [
+    {
+      "name": "/actions/default",
+      "usage": "single"
+    },
+    {
+      "name": "/actions/platformer",
+      "usage": "single"
+    },
+    {
+      "name": "/actions/buggy",
+      "usage": "single"
+    },
+    {
+      "name": "/actions/mixedreality",
+      "usage": "single"
+    }
+  ],
+  "default_bindings": [
+    {
+      "controller_type": "vive_controller",
+      "binding_url": "bindings_vive_controller.json"
+    },
+    {
+      "controller_type": "oculus_touch",
+      "binding_url": "bindings_oculus_touch.json"
+    },
+    {
+      "controller_type": "knuckles",
+      "binding_url": "bindings_knuckles.json"
+    },
+    {
+      "controller_type": "holographic_controller",
+      "binding_url": "bindings_holographic_controller.json"
+    },
+    {
+      "controller_type": "vive",
+      "binding_url": "binding_vive.json"
+    },
+    {
+      "controller_type": "vive_pro",
+      "binding_url": "binding_vive_pro.json"
+    },
+    {
+      "controller_type": "rift",
+      "binding_url": "binding_rift.json"
+    },
+    {
+      "controller_type": "holographic_hmd",
+      "binding_url": "binding_holographic_hmd.json"
+    },
+    {
+      "controller_type": "vive_tracker_camera",
+      "binding_url": "binding_vive_tracker_camera.json"
+    }
+  ],
+  "localization": [
+    {
+      "language_tag": "en_US",
+      "/actions/default/out/Haptic": "Haptic",
+      "/actions/platformer/in/Jump": "Jump"
+    }
+  ]
+}

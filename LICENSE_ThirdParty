@@ -1,0 +1,45 @@
+License for the code in `./Assets/Scripts/Bezier/`:
+
+// Copyright (c) 2015 burningmime
+// 
+// This software is provided 'as-is', without any express or implied
+// warranty. In no event will the authors be held liable for any damages
+// arising from the use of this software.
+// 
+// Permission is granted to anyone to use this software for any purpose,
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
+// 
+// 1. The origin of this software must not be misrepresented; you must not
+//    claim that you wrote the original software. If you use this software
+//    in a product, an acknowledgement in the product documentation would be
+//    appreciated but is not required.
+// 2. Altered source versions must be plainly marked as such, and must not be
+//    misrepresented as being the original software.
+// 3. This notice may not be removed or altered from any source distribution.
+
+
+Artwork usage rights (see `./Assets/Resources/Animatable`):
+
+Man typing on computer (available in binary only) (c) Chuantao Xu. All rights reserved.
+WaterCycleBase, water_cycle_raindrop, FishSimple, LargeCloud, SmallCloud, BlackBird, WhiteBird (c) Hermes Alvarado. All rights reserved.
+[Animatable]Drone (c) Drifting Nitro. CC-BY 3.0.
+[Animatbale]Plane (c) Poly By Google. CC-BY 3.0.
+Bathtub (c) Jerard Bitner. CC-BY 3.0.
+Bubble* (c) Rahul Arora. Public Domain.
+CircusRingLarge (c) Rahul Arora. Public Domain.
+DeadTree (c) Poly By Google. CC-BY 3.0.
+Earth (c) Poly By Google. CC-BY 3.0.
+FireSolid (c) Poly By Google. CC-BY 3.0.
+FireStrokes (c) Rahul Arora. Public Domain.
+Ghost (c) Andrew Julian. CC-BY 3.0.
+LegoMoonBuggy (c) Ben Mitchell. CC-BY 3.0.
+LegoMoonBuggy (Green Alien) (c) Taylor Wilson. CC-BY 3.0.
+MonsterBall (c) Rahul Arora. Public Domain.
+PaperPlane (c) Anonymous. CC-BY 3.0.
+PineTree(c) Danny Bittman. CC-BY 3.0.
+RubberDuck (c) Poly By Google. CC-BY 3.0.
+SadBall (c) Junior IT. CC-BY 3.0.
+Stroke (c) Rahul Arora. Public Domain.
+TreeStump (c) Poly By Google. CC-BY 3.0.
+Wizard (c) Fernando Dominguez. CC-BY 3.0.
