@@ -7,13 +7,18 @@ This code implements the animation tool described in
 ## Installation and Usage Instructions (Binary)
 1. Download from `https:///github.com/rarora7777/MagicalHands/releases`
 2. Extract and run on PowerShell or classic `cmd` console (tested on Windows 7 and 10):
+
    `./MagicalHands.exe --File ./Results/loop_de_loop.json`
+   
    to load the result `loop_de_loop` from Fig. 1(e--f). Please see `./Results` for other results from the paper.
+   
    Forgo the `--File` option to start creating your own animations:
+   
    `./MagicalHands.exe`
+   
 **Note:** You can also use Windows Explorer GUI instead of command line, but passing arguments to load a saved scene is painful.
 
-## Installation and usage instructions (Source)
+## Installation and Usage Instructions (Source)
 1. Start with cloning the repo, insluding submodules
 
    `git clone --recursive https://github.com/rarora7777/MagicalHands`
