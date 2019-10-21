@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// PoseManager is a pseudo-static class. That is, while it is not a syntactically
+/// static class, it should be treated as a semantically static class.
+/// PoseManager acts as the mid-level bridge between InputManager and GestureManager.
+/// It converts raw per-finger input data from InputManager to interpret hand poses.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GestureAnim;
@@ -163,10 +170,6 @@ namespace GestureAnim
         }
 
         private static CircularBuffer<PoseDataFrame> cachedPoseData;
-
-        //private Vector3[,] userFingertipPosition = new Vector3[(int)HandType.Max, fingertips.Length];
-        //private Vector3[] userGripPosition = new Vector3[(int)HandType.Max];
-        //private FingerShape[,] userFingerShape = new FingerShape[(int)HandType.Max, fingertips.Length];
 
         private static SphereCollider[,] fingertipCollider = new SphereCollider[(int)HandType.Max, fingertips.Length];
 
@@ -338,21 +341,17 @@ namespace GestureAnim
                     transform = GetHandTransform((HandType)i, fingertips[j]);
                     var fingertipObject = transform.gameObject;
                     SphereCollider collider;
-                    //Rigidbody rigidbody;
-
+                    
                     if (fingertipObject.GetComponent<SphereCollider>() == null)
                     {
                         collider = fingertipObject.AddComponent<SphereCollider>();
-                        //rigidbody = fingertipObject.AddComponent<Rigidbody>();
                     }
                     else
                     {
                         collider = fingertipObject.GetComponent<SphereCollider>();
-                        //rigidbody = fingertipObject.GetComponent<Rigidbody>();
                     }
 
                     collider.isTrigger = true;
-                    //rigidbody.isKinematic = true;
                     collider.radius = 0.01f;    //1cm
                     collider.center = new Vector3();    //(0, 0, 0)
 
@@ -553,7 +552,6 @@ namespace GestureAnim
                 if (Vector3.Dot(pos, fingerVector) > 0.13 && Vector3.Dot(pos, palmVector) < 0.01)
                     return FingerShape.Extended;
                 else if (Vector3.Dot(pos, fingerVector) > 0.112)
-                    //else if (Vector3.Dot(pos, fingerVector) > 0.1 && Vector3.Dot(pos, palmVector) < 0.05)
                     return FingerShape.Bent;
                 else if (Vector3.Dot(pos, palmVector) > 0.05)
                     return FingerShape.Midway;

@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// ParticleEmitter is a MonoBehaviour that can be attached onto Particle Emitter
+/// objects. Note that a ParticleSystem component is required, along with an
+/// Animatable component.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using burningmime.curves;
@@ -99,11 +105,7 @@ namespace GestureAnim
 
         public ShelfObject ParticleMeshCreator = null;
 
-        //int m_frameCounter = 0;
-        //float m_timeCounter = 0.0f;
-        //float m_lastFramerate = 0.0f;
-        //public float m_refreshTime = 0.5f;
-
+        
         void Awake()
         {
             animScript = GetComponent<Animatable>();
@@ -124,7 +126,6 @@ namespace GestureAnim
                     SpiralFrequency = frequency;
                 };
             
-            //RenderedCurve = GetComponent<LineRenderer>();
             RenderedCurve.enabled = false;
             RenderedCurve.widthMultiplier = Globals.EMISSION_CURVE_RENDER_WIDTH;
 
@@ -163,8 +164,7 @@ namespace GestureAnim
 
             emission = ps.emission;
             emission.enabled = true;
-            //emission.rateOverTime = new ParticleSystem.MinMaxCurve(Globals.PARTICLE_DEFAULT_EMISSION_RATE);
-
+            
             emitterShape = ps.shape;
             emitterShape.enabled = true;
             emitterShape.shapeType = ParticleSystemShapeType.Cone;
@@ -192,12 +192,6 @@ namespace GestureAnim
             {
                 RunTest();
             }
-            //else
-            //{
-            //    // This doesn't work properly, but I can get back to this later. Using the more 
-            //    // complex model created by RunTest() for now.
-            //    CreateDefaultEmission();
-            //}
         }
 
         private void OnDestroy()
@@ -312,10 +306,6 @@ namespace GestureAnim
             double[] posData = new double[3 * n];
             double[] velData = new double[3 * n];
             double[] accData = new double[3 * n];
-            //double[] tData = new double[3 * n];
-            //double[] nData = new double[3 * n];
-            //double[] bData = new double[3 * n];
-            //double[] timeData = new double[n];
 
             for (int i=startIdx; i<endIdx; ++i)
             {
@@ -342,13 +332,7 @@ namespace GestureAnim
                     posData[idx] = pos[j];
                     velData[idx] = vel[j];
                     accData[idx] = acc[j];
-
-                    //tData[idx] = tangent[j];
-                    //nData[idx] = normal[j];
-                    //bData[idx] = binormal[j];
                 }
-
-                //timeData[i - startIdx] = coneGestureTimeData[i];
             }
 
             // Perform SVD to get principal components
@@ -356,21 +340,10 @@ namespace GestureAnim
             Matrix<double> V = new MathNet.Numerics.LinearAlgebra.Double.DenseMatrix(n, 3, velData);
             Matrix<double> A = new MathNet.Numerics.LinearAlgebra.Double.DenseMatrix(n, 3, accData);
 
-            //Matrix<double> T = new MathNet.Numerics.LinearAlgebra.Double.DenseMatrix(n, 3, tData);
-            //Matrix<double> N = new MathNet.Numerics.LinearAlgebra.Double.DenseMatrix(n, 3, nData);
-            //Matrix<double> B = new MathNet.Numerics.LinearAlgebra.Double.DenseMatrix(n, 3, bData);
-            //Vector<double> t = new MathNet.Numerics.LinearAlgebra.Double.DenseVector(timeData);
-
-            //var velSvd = V.Svd(true);
             var accSvd = A.Svd(true);
 
-            //var SV = velSvd.S;
-            //var VV = velSvd.VT;
             var SA = accSvd.S;
             var VA = accSvd.VT;
-
-            //Debug.Log("Acc. singular values: " + SA[0].ToString("F3") + " " + SA[1].ToString("F3") + " " + SA[2].ToString("F3"));
-            //Debug.Log("Acc. rotation matrix: " + VA);
 
             if (SA[0] / SA[1] > Globals.CONE_GESTURE_CLASSIFICATION_SINGULAR_VALUE_RATIO)
                 ProcessEmissionNoiseGesture(P, VA);
@@ -410,7 +383,6 @@ namespace GestureAnim
             MaxRotationNoise = MaxPositionNoise * 360;
             RotationNoiseFrequency = 1 / timePeriod;
 
-            //Debug.Log(string.Join(" ", fft.Select(i=>i.ToString("F2")).ToArray()));
             Debug.Log("Noise freq: " + PositionNoiseFrequency + " Amplitude: " + maxAmp/n);
         }
 
@@ -438,64 +410,6 @@ namespace GestureAnim
             SpiralFrequency = Math.Sign(crossData.Sum()) * (float)(avgSpeed / MathNet.Numerics.Statistics.Statistics.Mean(P.RowNorms(2.0)));
 
             Debug.Log("Spiral freq: " + SpiralFrequency + "P x V sign: " + (float)crossData.Sum()/P.RowCount);
-
-            //int[] maxFreq = new int[2];
-            //double[] maxAmp = new double[2];
-
-            //var n = P.RowCount;
-
-            //for (int r = 0; r < 2; ++r)
-            //{
-            //    var series = P.Multiply(Rot.Row(r));
-
-            //    double[] fft = new double[n + 1 + ((n % 2 == 0) ? 1 : 0)];
-            //    series.ToArray().CopyTo(fft, 0);
-
-            //    Fourier.ForwardReal(fft, n, FourierOptions.Matlab);
-
-            //    maxFreq[r] = 0;
-            //    maxAmp[r] = 0.0f;
-            //    for (int i = 1; i < n; ++i)
-            //        if (Math.Abs(fft[i]) > maxAmp[r])
-            //        {
-            //            maxAmp[r] = Math.Abs(fft[i]);
-            //            maxFreq[r] = i;
-            //        }
-            //}
-
-            //float timePeriod = (2 * n / maxFreq.Sum()) * Globals.OCULUS_TRACKING_UPDATE_TIME;
-            //SpiralFrequency = 1 / timePeriod;
-            //Debug.Log("Spiral freq: " + SpiralFrequency + " Amplitude: " + maxAmp.Sum() / (2 * n));
-            //return;
-
-
-            //Matrix<double> series = new MathNet.Numerics.LinearAlgebra.Double.DenseMatrix(P.RowCount, 2);
-            //series.SetColumn(0, P.Multiply(Rot.Row(0)));
-            //series.SetColumn(1, P.Multiply(Rot.Row(1)));
-
-            //var n = series.RowCount;
-
-            //var fft = (from i in Enumerable.Range(0, n)
-            //        select new MathNet.Numerics.Complex32((float)series[i, 0], (float)series[i, 1])).ToArray();
-
-            //Fourier.Forward(fft, FourierOptions.NoScaling);
-
-            //int maxFreq = 0;
-            //double maxAmp = 0.0f;
-            //for (int i = 1; i < n; ++i)
-            //    if (fft[i].MagnitudeSquared > maxAmp)
-            //    {
-            //        maxAmp = fft[i].MagnitudeSquared;
-            //        maxFreq = i;
-            //    }
-
-            //float timePeriod = (n / (float)maxFreq) * Globals.OCULUS_TRACKING_UPDATE_TIME;
-
-            //MaxPositionNoise = (float)Math.Sqrt(maxAmp) / n;
-            //SpiralFrequency = 1 / timePeriod;
-            //Debug.Log("Spiral freq: " + SpiralFrequency + " Amplitude: " + maxAmp / n);
-
-            //Debug.Log(string.Join(" ", fft.Select(i => i.ToString("F2")).ToArray()));
         }
 
         void FixedUpdate()
@@ -580,7 +494,7 @@ namespace GestureAnim
                     data.Theta0 = 0;
             }
 
-            theta = data.Theta0 + 2 * Mathf.PI * SpiralFrequency * time/* * normalizedTime*/;
+            theta = data.Theta0 + 2 * Mathf.PI * SpiralFrequency * time;
 
             var emissionData = GetInterpolatedEmissionData(time);
             p.position = emissionCurve.Evaluate(splineParam.Item1, splineParam.Item2) +
@@ -623,13 +537,6 @@ namespace GestureAnim
             
             rot *= ( Quaternion.AngleAxis(rotationNoise.x, N) * Quaternion.AngleAxis(rotationNoise.y, B) );
             p.rotation3D = (rot * InitialParticleRotation).eulerAngles;
-
-
-            //if (idx == debugID)
-            //    Debug.Log("Pos. " + p.position.ToString("F3") +
-            //        " t: " + time.ToString("F5") +
-            //        " Param: " + splineParam.Item1 + ", " + splineParam.Item2.ToString("F3") +
-            //        " TNB: " + T.ToString("F2") + N.ToString("F2") + B.ToString("F2"));
         }
 
         public void NewEmissionCone(
@@ -774,12 +681,10 @@ namespace GestureAnim
             var numSegs = numPts - 1;
 
             Vector3[] vertices = new Vector3[
-                numPts * Globals.EMISSION_CONE_RENDER_DETAIL 
-                /*+ 2*/];
+                numPts * Globals.EMISSION_CONE_RENDER_DETAIL];
             Vector3[] normals = new Vector3[vertices.Length];
             int[] triangles = new int[
-                6 * numSegs * Globals.EMISSION_CONE_RENDER_DETAIL /*+
-                3 * 2 * (Globals.EMISSION_CONE_RENDER_DETAIL)*/];
+                6 * numSegs * Globals.EMISSION_CONE_RENDER_DETAIL];
 
             Vector3 pt, N1, N2;
             float r;
@@ -811,13 +716,6 @@ namespace GestureAnim
                 }
             }
 
-            // Add the vertices at the centers of the end caps
-            //vertices[vertices.Length - 2] = emissionCurve.Evaluate(0, 0.0f);
-            //vertices[vertices.Length - 1] = emissionCurve.Evaluate(emissionCurve.Curves.Count - 1, 1.0f);
-
-            //normals[vertices.Length - 2] = -emissionCurve.Tangent(0, 0.0f);
-            //normals[vertices.Length - 1] = emissionCurve.Tangent(emissionCurve.Curves.Count - 1, 1.0f);
-
             for (var seg = 0; seg < numSegs; ++seg)
             {
                 for (var quad = 0; quad < Globals.EMISSION_CONE_RENDER_DETAIL; ++quad)
@@ -837,30 +735,6 @@ namespace GestureAnim
                         Globals.EMISSION_CONE_RENDER_DETAIL * (seg + 1) + quad;
                 }
             }
-
-            //var capTriStartIdx = 6 * numSegs * Globals.EMISSION_CONE_RENDER_DETAIL;
-            //var endCapVertStartIdx = (numPts - 1) * Globals.EMISSION_CONE_RENDER_DETAIL;
-
-            //var nStart = normals[vertices.Length - 2];
-            //var nEnd = normals[vertices.Length - 1];
-
-            //// Add the triangle strips at the end caps
-            //for (var tri = 0; tri < Globals.EMISSION_CONE_RENDER_DETAIL; ++tri)
-            //{
-            //    triangles[capTriStartIdx + 3 * tri + 0] = vertices.Length - 2;
-            //    triangles[capTriStartIdx + 3 * tri + 1] = tri;
-            //    triangles[capTriStartIdx + 3 * tri + 2] = (tri + 1) % Globals.EMISSION_CONE_RENDER_DETAIL;
-
-            //    triangles[capTriStartIdx + 3 * (Globals.EMISSION_CONE_RENDER_DETAIL + tri) + 0] = 
-            //        vertices.Length - 1;
-            //    triangles[capTriStartIdx + 3 * (Globals.EMISSION_CONE_RENDER_DETAIL + tri) + 1] = 
-            //        endCapVertStartIdx + tri;
-            //    triangles[capTriStartIdx + 3 * (Globals.EMISSION_CONE_RENDER_DETAIL + tri) + 2] = 
-            //        endCapVertStartIdx + (tri + 1) % Globals.EMISSION_CONE_RENDER_DETAIL;
-
-            //    normals[tri] = (normals[tri] + nStart).normalized;
-            //    normals[endCapVertStartIdx + tri] = (normals[endCapVertStartIdx + tri] + nEnd).normalized;
-            //}
 
             Mesh mesh = new Mesh();
             mesh.vertices = vertices;
@@ -914,8 +788,6 @@ namespace GestureAnim
             {
                 Vector3 prev = RenderedCurve.GetPosition(RenderedCurve.positionCount - 2);
                 T = (avg - prev).normalized;
-                //    Vector3 tangent = (avg - prev).normalized;
-                //    n1 = Vector3.Cross(tangent, targetHit.normal);
             }
 
             Vector3 N2 = Vector3.Cross(T, N1).normalized;
@@ -963,8 +835,7 @@ namespace GestureAnim
                 if ((curTime - data.Value.LastTime).TotalSeconds > 10.0f)
                     keys.Add(data.Key);
 
-            //Debug.Log("GC'ing #keys: " + keys.Count);
-
+            
             foreach (var key in keys)
                 cdata.Remove(key);
         }
@@ -1069,7 +940,6 @@ namespace GestureAnim
                     return;
                 }
                 var mr = particle.GetComponentInChildren<MeshRenderer>();
-                //var sizeEstimate = mr.bounds.size.magnitude;
                 ParticleScale = mr.transform.lossyScale;
                 main.startSizeX = ParticleScale.x;
                 main.startSizeY = ParticleScale.y;
@@ -1088,8 +958,6 @@ namespace GestureAnim
 
                 mesh.SetVertices(verts.ToList());
                 psr.mesh = mesh;
-                //Material newMat = new Material(mr.GetComponent<MeshRenderer>().material);
-                //newMat.shader = newMat.shader;
                 psr.material = mr.GetComponent<MeshRenderer>().material;
                 Destroy(particle);
                 ps.Stop();
@@ -1176,41 +1044,6 @@ namespace GestureAnim
             }
 
             NewEmissionCone(lhp, rhp, times, false);
-
-            //MeshCollider meshCollider = RenderedConeMeshFilter.gameObject.GetComponent<MeshCollider>();
-            //if (meshCollider == null)
-            //    meshCollider = RenderedConeMeshFilter.gameObject.AddComponent<MeshCollider>();
-
-            //meshCollider.cookingOptions |= (
-            //    MeshColliderCookingOptions.CookForFasterSimulation |
-            //    MeshColliderCookingOptions.EnableMeshCleaning |
-            //    MeshColliderCookingOptions.WeldColocatedVertices);
-
-            //meshCollider.sharedMesh = RenderedConeMeshFilter.sharedMesh;
-            //List<Vector3> lhp = new List<Vector3>
-            //{
-            //    new Vector3(-.50f, 0, .05f),
-            //    new Vector3(-.15f, 0, 2.0f)
-            //};
-
-            //List<Vector3> lhv = new List<Vector3>
-            //{
-            //    new Vector3(.5f, 0, .5f),
-            //    new Vector3(  0, 0, .5f)
-            //};
-
-            //List<Vector3> lha = new List<Vector3>
-            //{
-            //    new Vector3(.5f, 0, .25f),
-            //    new Vector3(.5f, 0, .25f)
-            //};
-
-
-            //var rhp = lhp.Select(i => new Vector3(-i.x, i.y, i.z)).ToList();
-            //var rhv = lhv.Select(i => new Vector3(-i.x, i.y, i.z)).ToList();
-            //var rha = lha.Select(i => new Vector3(-i.x, i.y, i.z)).ToList();
-
-            //NewEmissionCone(lhp, rhp, lhv, rhv, lha, rha, false);
         }
 
         void CreateDefaultEmission()

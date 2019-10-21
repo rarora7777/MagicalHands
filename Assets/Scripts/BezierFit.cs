@@ -1,4 +1,9 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// BezierFit interfaces with the external code (in ./Bezier/) and provides utility
+/// functions for storing data on and retrieving data from Bezier splines.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -10,6 +15,12 @@ namespace GestureAnim
 {
     class PointSet : g3.IPointSet
     {
+        //////////////////////////////////////////////////////////////////////////////////////
+        /// PointSet implements the g3.IPointSet interface and defines the necessary functions
+        /// for using a g3.PointAABBTree for efficiently fitting Bezier splines to an input
+        /// set of points.
+        //////////////////////////////////////////////////////////////////////////////////////
+
         private Vector3d[] vertices;
 
         public PointSet(Vector3d[] vertIn)
@@ -267,10 +278,6 @@ namespace GestureAnim
                             _RedistParam(i, s - 1, m);
                             _RedistParam(i, m + 1, e2);
                         }
-                        //while (k1 >= 0 &&
-                        //    paramToTimeCache[i, j] - paramToTimeCache[i, k1] < 1e-6)
-                        //    k1--;
-                        //k1++;
 
                         j = e2 + 1;
                     }

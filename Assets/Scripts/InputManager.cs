@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// InputManager is a pseudo-static class. That is, while it is not a syntactically
+/// static class, it should be treated as a semantically static class.
+/// InputManager interfaces with the Oculus VR API and provides low-level input
+/// data to PoseManager.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GestureAnim;
@@ -23,26 +30,11 @@ namespace GestureAnim
         void Start()
         {
             RenderSettings.skybox = Skybox[0];
-
-            //PlayerPrefs.SetInt("UnitySelectMonitor", 1);
-            //if (Display.displays.Length > 1)
-            //    Display.displays[1].Activate();
-
-            //Debug.Log(OVRInput.IsControllerConnected(OVRInput.Controller.Touch).ToString());
         }
 
         // Update is called once per frame
         void Update()
         {
-            // if (Input.GetButton("BtnRightA"))
-            // Debug.Log("Right button PRESSED!");
-            // if (Input.GetButton("TchRightA"))
-            // Debug.Log("Right button TOUCHED!");
-            // if (Input.GetAxis("AxisRightHorz") > 0.5)
-            // Debug.Log("Right Stick MOVED!");
-
-            // Debug.Log(Input.GetAxis("AxisRightHorz").ToString());
-
             OVRInput.Update();
 
             leftTouchActive = OVRInput.IsControllerConnected(OVRInput.Controller.LTouch);
@@ -200,13 +192,6 @@ namespace GestureAnim
                 else
                     Cam2.transform.Translate(0.05f * Vector3.down, Space.World);
             }
-
-
-            //if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.Touch) > 0.01f)
-            //    Debug.Log(OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.Touch).ToString());
-
-            //if (Mathf.Abs(OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.Touch).x) > 0.1f)
-            //    Debug.Log(OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.Touch).ToString());
         }
 
 
@@ -219,11 +204,6 @@ namespace GestureAnim
 
             if (handActive)
             {
-                //var handBase = poseManager.GetHandTransform(hand, PoseManager.HandJoint.Wrist);
-                //var jointTransform = poseManager.GetHandTransform(hand, joint);
-                //if (handBase is null || jointTransform is null)
-                //    return;
-                //Debug.Log(handBase.InverseTransformPoint(jointTransform.position)*100);
                 Debug.Log(hand.ToString() + " " + joint.ToString() + " " + PoseManager.GetFingertipLocalPosition(hand, joint) * 100);
             }
         }

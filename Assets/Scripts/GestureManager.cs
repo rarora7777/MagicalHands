@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// GestureManager is a pseudo-static class. That is, while it is not a syntactically
+/// static class, it should be treated as a semantically static class.
+/// GestureManager interfaces with PoseManager and TimeManager to handle high-lelve
+/// gesture recognition and recognizer state management.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Oculus.Avatar;
@@ -35,10 +42,6 @@ namespace GestureAnim
         static DateTime tapGestureStartTime = DateTime.MinValue;
 
         static ParticleEmitter emitterReceivingConeGestures = null;
-
-        //List<Vector3> rightHandPositions;
-        //List<Vector3> leftHandPositions;
-        //List<float> times;
 
         public static GestureRecognizerState RecognitionState { get; private set; } = GestureRecognizerState.Default;
 
@@ -235,7 +238,7 @@ namespace GestureAnim
                     break;
                 case GestureRecognizerState.ReadyToSelect:
                     // Pointing right finger again
-                    if (rightPointOn/* && rightInteracting.Count > 0*/)
+                    if (rightPointOn)
                     {
                         // If the amount of time spent "almost-pointing" was small, execute selection command
                         if ((DateTime.Now - tapGestureStartTime).TotalSeconds < Globals.TAP_GESTURE_MAX_TIME)
@@ -257,16 +260,6 @@ namespace GestureAnim
                                 SetRecognitionState(GestureRecognizerState.Default);
                         }
                     }
-                    //// If no objects are in the interaction range, ignore the whole interaction
-                    //else if ((DateTime.Now - rightPointOffTime).TotalSeconds > Globals.TAP_GESTURE_MAX_TIME)
-                    //{
-                    //    SetRecognitionState(GestureRecognizerState.Default);
-                    //}
-                    //else
-                    //{
-                    //    Debug.Log("Point: " + rightPointOn + "Interacting: " + rightInteracting.Count +
-                    //        "Time since off: " + (DateTime.Now - rightPointOffTime).TotalSeconds);
-                    //}
                     break;
                 case GestureRecognizerState.AfterSelectGesture:
                     // Ignore all other hand pose changes until an object is selected
@@ -366,31 +359,21 @@ namespace GestureAnim
 
         private static Animatable GetSmallest(List<Animatable> list, bool overrideGesturalSelection = false)
         {
-            //if (overrideGesturalSelection && TimeManager.SelectedObject != null)
-            //    return TimeManager.SelectedObject;
-            //try
-            //{
-                float minSize = 100.0f;
-                Animatable selected = null;
-                foreach (var obj in list)
+            float minSize = 100.0f;
+            Animatable selected = null;
+            foreach (var obj in list)
+            {
+                var objSize = obj.SizeProxy.bounds.size.sqrMagnitude;
+                if (objSize < minSize)
                 {
-                    var objSize = obj.SizeProxy.bounds.size.sqrMagnitude;
-                    if (objSize < minSize)
-                    {
-                        selected = obj;
-                        minSize = objSize;
-                    }
+                    selected = obj;
+                    minSize = objSize;
                 }
+            }
 
-                TrySwitchToEmissionConeGestureMode(ref selected);
+            TrySwitchToEmissionConeGestureMode(ref selected);
 
-                return selected;
-            //}
-            //catch (Exception e)
-            //{
-            //    Debug.Log("hmmm");
-            //    return null;
-            //}
+            return selected;
         }
 
         private static Animatable GetSmallest(List<Animatable> list1, List<Animatable> list2)
@@ -424,7 +407,6 @@ namespace GestureAnim
             {
                 Debug.Log("Deselecting!");
                 TimeManager.SelectedObject.Deselected();
-                //SetRecognitionState(GestureRecognizerState.Default);
             }
             else
             {
@@ -490,7 +472,6 @@ namespace GestureAnim
             var selected = GetSmallest(rightInteracting);
             if (selected != null)
             {
-                //Debug.Log("Ready to rotate " + selected.name);
                 var size = Mathf.Max(
                     1.25f*selected.SizeProxy.bounds.size.magnitude,
                     0.3f);
@@ -498,39 +479,28 @@ namespace GestureAnim
                 rotationAxisUI.transform.position = selected.transform.position;
                 rotationAxisUI.transform.localScale = new Vector3(0.01f, size, 0.01f);
                 rotationAxisUI.transform.up = dir;
-                //rotationAxisUI.transform.SetParent(index, true);
                 rotationAxisUI.GetComponent<Renderer>().enabled = true;
             }
         }
 
         void ProcessRotationCancellation()
         {
-            //Debug.Log("Rotation gesture cancelled!");
             rotationAxisUI.GetComponent<Renderer>().enabled = false;
         }
 
         static void ProcessEmissionConeGestureStart()
         {
             Debug.Log("Defining emission cone.");
-            //emissionConeStartTime = DateTime.Now;
-            //rightHandPositions = new List<Vector3>(250);
-            //leftHandPositions = new List<Vector3>(250);
-            //times = new List<float>(250);
-
+            
             PoseManager.OnHandShapeChange += ProcessEmissionConeGestureEnd;
             TimeManager.SelectedObject.GetComponent<ParticleEmitter>().EmissionConeDrawingStarted();
         }
 
         static void ProcessEmissionConeGestureEnd()
         {
-            //Debug.Log("Emission cone defined! #Pts: " + leftHandPositions.Count);
             PoseManager.OnHandShapeChange -= ProcessEmissionConeGestureEnd;
             SetRecognitionState(GestureRecognizerState.Default);
 
-            //if (leftHandPositions.Count > 1)
-            //{
-            //    TimeManager.SelectedObject.GetComponent<ParticleEmitter>().NewEmissionCone(leftHandPositions, rightHandPositions, times);
-            //}
             TimeManager.SelectedObject.GetComponent<ParticleEmitter>().EmissionConeDrawingFinished();
         }
 
@@ -564,7 +534,6 @@ namespace GestureAnim
             Debug.Log("Right Pinch OFF");
             rightPinchOffTime = DateTime.Now;
             rightInteracting.Clear();
-            //Debug.Log("Pinch OFF. All interactions cleared.");
         }
 
         private static void LeftHandPointStartHandler()
@@ -579,11 +548,6 @@ namespace GestureAnim
             rightPointOn = true;
             rightPointOnTime = DateTime.Now;
             ProcessInteractionPose(OvrAvatar.HandType.Right, rightInteracting);
-
-            //Debug.Log("Right Pointing. Time since Almost-point: " +
-            //    (rightPointOnTime - rightAlmostPointOnTime).TotalSeconds +
-            //    " Recognition state: " + RecognitionState +
-            //    " Selection: " + (TimeManager.SelectedObject ==  null).ToString());
         }
 
         private static void LeftHandPointStopHandler()
@@ -598,7 +562,6 @@ namespace GestureAnim
             rightPointOn = false;
             rightPointOffTime = DateTime.Now;
             rightInteracting.Clear();
-            //Debug.Log("Point OFF. All interactions cleared!");
         }
 
         private static void LeftHandAlmostPointStartHandler()
@@ -627,7 +590,6 @@ namespace GestureAnim
             rightAlmostPointOn = false;
             rightAlmostPointOffTime = DateTime.Now;
             rightInteracting.Clear();
-            //Debug.Log("Almost Point OFF. All interactions cleared!");
         }
 
         private static void LeftHandGrabStartHandler()
@@ -656,7 +618,6 @@ namespace GestureAnim
             rightGrabOn = false;
             rightGrabOffTime = DateTime.Now;
             rightInteracting.Clear();
-            //Debug.Log("Grab OFF. All interactions cleared!");
         }
 
         private static void ProcessInteractionPose(OvrAvatar.HandType hand, List<Animatable> interactingList)
@@ -666,7 +627,6 @@ namespace GestureAnim
                 if (intersection.Item1 == hand  && intersection.Item2 == PoseManager.HandJoint.IndexTip)
                 {
                     interactingList.Add(intersection.Item3);
-                    //Debug.Log("[Left] pinching " + intersection.Item3.name);
                 }
             }
         }
@@ -678,7 +638,6 @@ namespace GestureAnim
                 (rightPinchOn || rightPointOn || rightGrabOn))
             {
                 rightInteracting.Add(intersection.Item3);
-                //Debug.Log("[Right] interacting with " + intersection.Item3.name);
             }
             else if (intersection.Item1 == OvrAvatar.HandType.Left &&
                 intersection.Item2 == PoseManager.HandJoint.IndexTip &&
@@ -694,7 +653,6 @@ namespace GestureAnim
                 intersection.Item2 == PoseManager.HandJoint.IndexTip && rightInteracting.Contains(intersection.Item3))
             {
                 rightInteracting.Remove(intersection.Item3);
-                //Debug.Log("[Right] no longer interacting with " + intersection.Item3.name);
             }
             else if (intersection.Item1 == OvrAvatar.HandType.Left && (leftPinchOn || leftPointOn || leftGrabOn) &&
                 intersection.Item2 == PoseManager.HandJoint.IndexTip && leftInteracting.Contains(intersection.Item3))

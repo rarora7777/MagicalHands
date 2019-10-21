@@ -1,4 +1,11 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// UIButton is a highly-specialized MonoBehaviour used to provide timeline-control
+/// functionality to the buttons in the Spatial UI. By default, this UI is places on a
+/// UI panel/box hovering over the user's left hand. Please look at the scene in the 
+/// Unity Editor.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

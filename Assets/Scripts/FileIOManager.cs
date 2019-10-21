@@ -1,4 +1,11 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// FileIOManager is a pseudo-static class. That is, while it is not a syntactically
+/// static class, it should be treated as a semantically static class.
+/// FileIOManager handles serialization and deserialization of data structures, and
+/// File I/O for saving and loading MagicalHands scenes.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
@@ -231,8 +238,7 @@ namespace GestureAnim
         public List<SerializableVector3> CurveControlPoints;
 
         public List<float> TimeCache;
-        //public List<float> ArcLengthCache;
-
+        
         public List<Tuple<float, ParticleEmitter.EmissionData>> EmissionDataKeys;
 
         public float GravityInfluence;
@@ -480,8 +486,6 @@ namespace GestureAnim
                 // component must be `obj` itself, which we skip
                 for (int i = 1; i < sceneChildren.Length; ++i)
                 {
-                    //if (sceneChildren[i].GetInstanceID() == sceneObject.GetInstanceID())
-                    //    continue;
                     SetPropertiesFromJsonObject(sceneChildren[i], obj.Children[i - 1]);
                 }
             }

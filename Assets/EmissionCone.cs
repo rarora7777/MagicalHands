@@ -1,4 +1,9 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// EmissionCone detects intersections with hands to determine if contextual gestures
+/// for particle systems need to be enabled/disabled.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;

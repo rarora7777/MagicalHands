@@ -1,4 +1,9 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// Animatable is the base class for objects that can be manipulated using gestures.
+/// Attach this script to the GameObjects that you want to animate.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

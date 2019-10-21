@@ -1,4 +1,10 @@
-﻿using System.Collections;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// ShelfObject is a MonoBehaviour that should be applied to "creator" objects placed
+/// in the MagicalHands object shelf. The main task is the creation and destruction of
+/// Animatable objects.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -14,28 +20,7 @@ namespace GestureAnim
 
         void Start()
         {
-            //MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
-            //CombineInstance[] combine = new CombineInstance[meshFilters.Length];
 
-            //int i = 0;
-            //while (i < meshFilters.Length)
-            //{
-            //    combine[i].mesh = meshFilters[i].sharedMesh;
-            //    combine[i].transform = transform.worldToLocalMatrix * meshFilters[i].transform.localToWorldMatrix;
-            //    meshFilters[i].gameObject.SetActive(false);
-
-            //    i++;
-            //}
-
-            //if (GetComponent<MeshFilter>() == null)
-            //    gameObject.AddComponent<MeshFilter>();
-
-            //if (GetComponent<MeshRenderer>() == null)
-            //    gameObject.AddComponent<MeshRenderer>();
-
-            //transform.GetComponent<MeshFilter>().mesh = new Mesh();
-            //transform.GetComponent<MeshFilter>().mesh.CombineMeshes(combine);
-            //transform.gameObject.SetActive(true);
         }
 
         // Update is called once per frame
@@ -46,7 +31,6 @@ namespace GestureAnim
 
         public Animatable InstantiateAnimatable()
         {
-            //GameObject obj = Instantiate(Resources.Load<GameObject>(AnimatablePrefabName)) as GameObject;
             GameObject obj = (GameObject)Instantiate(AnimatablePrefab);
 
             if (obj == null)

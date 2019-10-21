@@ -1,4 +1,9 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// Globals.cs defines useful scalar constants and data structures for the MagicalHands
+/// system.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -124,13 +129,10 @@ namespace GestureAnim
 
         public void Add(T t)
         {
-            //_lock.EnterWriteLock();
             try
             {
                 if (_data.Count == _size)
                 {
-                    //T value;
-                    //_data.TryDequeue(out value);
                     _data.Dequeue();
                 }
 
@@ -138,7 +140,6 @@ namespace GestureAnim
             }
             finally
             {
-                //_lock.ExitWriteLock();
             }
         }
     }

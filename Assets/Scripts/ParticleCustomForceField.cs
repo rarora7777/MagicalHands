@@ -1,4 +1,11 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// ParticleCustomForceField can be utilized to define a custom function for applying
+/// forces onto particles emitted from a system. This is currently unused but could be
+/// used in some kind of Advect() function. See ParticleEmitter.AdvectParticleDirect()
+/// for inspiration.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

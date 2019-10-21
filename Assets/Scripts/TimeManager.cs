@@ -1,4 +1,11 @@
-﻿using System;
+﻿//////////////////////////////////////////////////////////////////////////////////////
+/// TimeManager is a pseudo-static class. That is, while it is not a syntactically
+/// static class, it should be treated as a semantically static class.
+/// TimeManager controls the animation timeline and coordinates with GestureManager to
+/// modify and manipulate the state of the animation system.
+//////////////////////////////////////////////////////////////////////////////////////
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,27 +30,6 @@ namespace GestureAnim
             new Stack<Tuple<List<Vector3>, List<float>, List<Tuple<float, ParticleEmitter.EmissionData>>>>(20);
         static Stack<Tuple<float, float>> emissionNoiseStack = new Stack<Tuple<float, float>>(20);
         static Stack<float> emissionSpiralStack = new Stack<float>(20);
-
-        //static Func<Vector3, Vector3> dirW2P = x => {
-        //    if (initialObjectPose.transform.parent == null)
-        //        return x;
-        //    else
-        //        return initialObjectPose.transform.parent.InverseTransformDirection(x);
-        //    };
-
-        //static Func<Vector3, Vector3> ptW2P = x => {
-        //    if (initialObjectPose.transform.parent == null)
-        //        return x;
-        //    else
-        //        return initialObjectPose.transform.parent.InverseTransformPoint(x);
-        //};
-
-        //static Func<Vector3, Vector3> vecW2P = x => {
-        //    if (initialObjectPose.transform.parent == null)
-        //        return x;
-        //    else
-        //        return initialObjectPose.transform.parent.InverseTransformVector(x);
-        //};
 
         static Vector3 initialHandPosition;    // initial hand position: useful for translation
         static float initialInterHandDistance; // initial distance b/w two hands (for scaling)
@@ -79,9 +65,6 @@ namespace GestureAnim
 
             foreach (var obj in PreRegisteredObjects)
                 obj.Init(null);
-
-            //var emitter = PreRegisteredObjects[0].GetComponentInChildren<ParticleEmitter>();
-            //emitter.TryChangeParticleShapeFromDroppedObject(FindObjectOfType<ShelfObject>());
         }
 
         // Update is called once per frame
@@ -95,8 +78,6 @@ namespace GestureAnim
             }
             else if (IsAnimationPlaying)
             {
-                //Debug.Log((DateTime.Now - lastFrameTime).TotalSeconds.ToString("F3"));
-                
                 if (Mathf.FloorToInt((float)(DateTime.Now - lastFrameTime).TotalSeconds * Globals.FPS) > 0)
                 {
                     // Use FPS to determine which frame to move to (NOTE: this might skip frames)
@@ -166,7 +147,6 @@ namespace GestureAnim
                 if (newFrame)
                 {
                     controlledObject.EvaluateTransform(CurFrame);
-                    //Debug.Log(controlledObject.transform.localScale.ToString("F2"));
                 }
             }
             SetFrameCounterText();
@@ -217,8 +197,6 @@ namespace GestureAnim
             initialObjectPose.transform.localScale = obj.transform.localScale;
             NumFrameBeforeGesture = NumFrame;
             
-            //Debug.Log("Starting with" + initialObjectPose.transform.localScale.ToString("F2"));
-
             if (IsRecording)
                 PlayAnimationInScript();
             else
@@ -296,7 +274,7 @@ namespace GestureAnim
                     break;
             }
             controlledObject.EvaluateTransform(CurFrame);
-            //Debug.Log(controlledObject.transform.localScale.ToString("F2"));
+
             controlledObject.Deselected();
             controlledObject = null;
             if (IsRecording)
