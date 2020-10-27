@@ -2,7 +2,9 @@
 
 This code implements the animation tool described in 
 
-"Rahul Arora, Rubaiat Habib Kazi, Danny Kaufman, Wilmot Li, and Karan Singh. 2019. MagicalHands: Mid-Air Hand Gestures for Animating in VR. In Proceedings of the 32nd Annual ACM Symposium on User Interface Software and Technology (UIST '19). ACM, New York, NY, USA. http://dx.doi.org/10.1145/3332165.3347942." Please see the paper or the UIST 2019 talk for more details: https://www.youtube.com/watch?v=fIHhm7Vrgwo.
+"Rahul Arora, Rubaiat Habib Kazi, Danny Kaufman, Wilmot Li, and Karan Singh. 2019. MagicalHands: Mid-Air Hand Gestures for Animating in VR. In Proceedings of the 32nd Annual ACM Symposium on User Interface Software and Technology (UIST '19). ACM, New York, NY, USA. http://dx.doi.org/10.1145/3332165.3347942."
+
+[This writeup](https://research.adobe.com/news/experimental-system-translates-mid-air-hand-gestures-into-3d-animation/) on the Adobe Research blog provides a quick, approachable overview of the project. For details, please look at [the paper](http://dx.doi.org/10.1145/3332165.3347942) or [the UIST 2019 talk](https://www.youtube.com/watch?v=fIHhm7Vrgwo).
 
 ## Installation and Usage Instructions (Binary)
 1. Download from `https:///github.com/rarora7777/MagicalHands/releases`
